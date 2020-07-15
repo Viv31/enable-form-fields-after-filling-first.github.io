@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Form Fields disabled</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <style type="text/css">
+  	body{
+  		background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 16%, rgba(3,141,208,1) 40%, rgba(4,110,188,1) 49%, rgba(6,77,166,1) 54%, rgba(5,92,176,1) 61%, rgba(4,122,196,1) 68%, rgba(0,212,255,1) 100%);
+  	}
+  	#form_div{
+  		margin-top: 50px;
+  		background-color: rgba(0,0,0,0.7);
+  		padding: 10px;
+  		border-radius: 2px;
+  	}
+  	
+  </style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6  mx-auto" id="form_div">
+				<h5 class="text-center text-white">Signup Form</h5>
+				<hr style="background-color: #fff;">
+				<div class="form-group">
+					<input type="text" name="first_name" id="first_name" class="form-control" placeholder="Enter name">
+				</div>
+				<div class="form-group">
+					<input type="text" name="last_name" id="last_name" class="form-control" placeholder="Enter Last Name">
+				</div>
+				<div class="form-group">
+					<input type="text" name="username" id="username" class="form-control" placeholder="Enter username">
+				</div>
+				<div class="form-group">
+					<input type="email" name="email" id="email" class="form-control" placeholder="Enter email">
+				</div>
+				<div class="form-group">
+					<input type="password" name="password" id="password" class="form-control" placeholder="Enter password">
+				</div>
+				<button class="btn btn-warning" id="submit_data">Submit</button>
+			</div>
+		</div>
+		
+	</div>
+	<script type = "text/javascript" >
+    $(document).ready(function() {
+
+
+        $("#last_name").prop("disabled", true);
+        $("#username").prop("disabled", true);
+        $("#email").prop("disabled", true);
+        $("#password").prop("disabled", true);
+        $("#submit_data").prop("disabled", true);
+
+        var first_name = $("#first_name").val();
+        var last_name = $("#last_name").val();
+        var username = $("#username").val();
+        var email = $("#email").val();
+        var password = $("#password").val();
+
+        $(this).keyup(function() {
+            if ($("#first_name").val().length == 0 || $("#first_name").val().length < 3) {
+                $("#last_name").prop("disabled", true);
+                $("#username").prop("disabled", true);
+                $("#email").prop("disabled", true);
+                $("#password").prop("disabled", true);
+                $("#submit_data").prop("disabled", true);
+
+            } else {
+                $("#last_name").prop("disabled", false);
+                if ($("#last_name").val().length == 0 || $("#last_name").val().length < 2) {
+                    $("#username").prop("disabled", true);
+                    $("#email").prop("disabled", true);
+                    $("#password").prop("disabled", true);
+                    $("#submit_data").prop("disabled", true);
+
+                } else {
+                    $("#username").prop("disabled", false);
+                    if ($("#username").val().length == 0 || $("#username").val().length < 3) {
+                        $("#email").prop("disabled", true);
+                        $("#password").prop("disabled", true);
+                        $("#submit_data").prop("disabled", true);
+
+                    } else {
+                        $("#email").prop("disabled", false);
+                        if ($("#email").val().length == 0) {
+                            $("#password").prop("disabled", true);
+                            $("#submit_data").prop("disabled", true);
+
+                        } else {
+                            $("#password").prop("disabled", false);
+                            if ($("#password").val().length == 0 || $("#password").val().length <8 ) {
+                                $("#submit_data").prop("disabled", true);
+
+                            } else {
+                                $("#submit_data").prop("disabled", false);
+
+                            }
+
+                        }
+
+                    }
+
+                }
+            }
+
+        });
+
+
+
+
+    }); 
+</script>
+</body>
+</html>
